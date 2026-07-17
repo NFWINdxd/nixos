@@ -30,9 +30,16 @@
     services.hyprlauncher = {
       enable = true;
       settings = {
-        grab_focus = true;
-        rounding_large = 2;
-	rounding_small = 2;
+        
+	grab_focus = true;
+	
+	base = "0xffb7c5ee";
+	text = "0xffb7c5ee";
+
+	rounding_large = "2";
+	rounding_small = "2";
+
+
 
       };
     };
