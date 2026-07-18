@@ -2,7 +2,7 @@
   config = {
     # Let home manager install and manage itself.
 
-	home.file.".config/hypr/hyprland.lua".text = builtins.readFile ./hyprland.lua;
+    home.file.".config/hypr/hyprland.lua".text = builtins.readFile ./hyprland.lua;
 
     programs.home-manager.enable = true;
 
@@ -15,7 +15,7 @@
       enable = true;
       enableCompletion = true;
       autosuggestion.enable = true;
-
+      syntaxHighlighting.enable = true;
       shellAliases = {
         nr = "sudo nixos-rebuild switch --flake /etc/nixos#nfwin";
         c = "clear";
@@ -30,17 +30,19 @@
     services.hyprlauncher = {
       enable = true;
       settings = {
-        
-	grab_focus = true;
-	
-	base = "0xffb7c5ee";
-	text = "0xffb7c5ee";
+        grab_focus = true;
 
-	rounding_large = "2";
-	rounding_small = "2";
+        base = "0xffb7c5ee";
+        text = "0xffb7c5ee";
 
+        rounding_large = "2";
+        rounding_small = "2";
 
-
+        programs.kitty = {
+          enable = true;
+          settings = {
+          };
+        };
       };
     };
   };
