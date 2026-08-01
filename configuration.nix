@@ -64,11 +64,20 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  services.desktopManager.plasma6.enable = true;
+
   programs.hyprland.enable = true;
 
   programs.hyprland.xwayland.enable = true;
 
   programs.zsh.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = false; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = false; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
 
   xdg = {
     portal = {
@@ -112,6 +121,8 @@
     hyprtoolkit
     btop
     htop
+    tor
+    steam
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
   ];
@@ -131,7 +142,7 @@
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  services.openssh.enable = true;
+  services.openssh.enable = false;
 
   home-manager = {
     backupFileExtension = "hm-old";
