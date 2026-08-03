@@ -64,8 +64,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  services.desktopManager.plasma6.enable = true;
-
   programs.hyprland.enable = true;
 
   programs.hyprland.xwayland.enable = true;
@@ -123,6 +121,7 @@
     htop
     tor
     steam
+    tor-browser
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
   ];

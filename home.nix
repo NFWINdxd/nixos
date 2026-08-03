@@ -45,5 +45,26 @@
         };
       };
     };
+
+    services.hyprpaper = {
+      enable = true;
+      settings = {
+        preload = [
+       
+       ];
+        wallpaper = [
+          # By display
+          # {
+          #   monitor = "DP-2";
+          #   path = "~/wallpapers/wallpaper2.jpg";
+          # }
+          # By default/fallback
+          {
+            monitor = "HDMI-A-1";
+            path = "~/Pictures/artoria.jpg";
+          }
+        ];
+      };
+    };
   };
 }
