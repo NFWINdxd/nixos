@@ -37,34 +37,50 @@
 
         rounding_large = "2";
         rounding_small = "2";
-
-        programs.kitty = {
-          enable = true;
-          settings = {
-          };
-        };
       };
     };
 
-    services.hyprpaper = {
-      enable = true;
-      settings = {
-        preload = [
-       
-       ];
-        wallpaper = [
-          # By display
-          # {
-          #   monitor = "DP-2";
-          #   path = "~/wallpapers/wallpaper2.jpg";
-          # }
-          # By default/fallback
-          {
-            monitor = "HDMI-A-1";
-            path = "~/Pictures/artoria.jpg";
-          }
-        ];
-      };
+
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = [
+        "~/Picutres/artoria.jpg"
+      ];
+      wallpaper = [
+        # By display
+        # {
+        #   monitor = "DP-2";
+        #   path = "~/wallpapers/wallpaper2.jpg";
+        # }
+        # By default/fallback
+        {
+          monitor = "HDMI-A-1";
+          path = "~/Pictures/artoria.jpg";
+        }
+      ];
     };
   };
+
+  services.hyprsunset.enable = true;
+
+  services.hyprsunset.settings = {
+    settings = {
+      max-gamma = "100";
+
+      profile = [
+        {
+          time = "7:30";
+          identity = true;
+        }
+        {
+          time = "21:00";
+          temprature = 5500;
+          gamma = 0.8;
+        }
+      ];
+    };
+  };
+};
+
 }

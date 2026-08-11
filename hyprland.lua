@@ -56,8 +56,8 @@ local menu        = "hyprlauncher"
 -- end)
 
 hl.on("hyprland.start", function () 
-  hl.exec_cmd(terminal)
-  hl.exec_cmd("hyprpaper") -- Execute waybar, hyprpaper, firefox
+  hl.exec_cmd("hyprpaper")
+  hl.exec_cmd(terminal) -- Execute waybar, hyprpaper, firefox
 end)
 
 -------------------------------
@@ -121,7 +121,7 @@ hl.config({
 
         -- Change transparency of focused and unfocused windows
         active_opacity   = 1,
-        inactive_opacity = 0.9,
+        inactive_opacity = 1,
 
         shadow = {
             enabled      = false,
