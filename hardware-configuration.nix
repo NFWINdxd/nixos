@@ -22,6 +22,16 @@
     fsType = "ext4";
   };
 
+  fileSystems."/steamdisk" = {
+    device = "/dev/disk/by-uuid/88f58c81-d752-47d0-930d-91987db743ca";
+    fsType = "ext4";
+    options = [
+      "users"
+      "nofail"
+      "exec"
+    ];
+  };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/C8AE-12F8";
     fsType = "vfat";
@@ -31,5 +41,7 @@
   swapDevices = [];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+ hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+
 }
