@@ -122,6 +122,8 @@ services.mullvad-vpn.enable = true;
     glib
     glibc
     protontricks
+    openssh
+    osu-lazer-bin
   ];
 
   environment.sessionVariables.EDITOR = "nvim";

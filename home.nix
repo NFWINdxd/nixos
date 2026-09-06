@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   config = {
-    # Let home manager install and manage itself.
 
     home.file.".config/hypr/hyprland.lua".text = builtins.readFile ./hyprland.lua;
 
