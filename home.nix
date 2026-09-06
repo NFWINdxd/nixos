@@ -18,7 +18,8 @@
       syntaxHighlighting.enable = true;
       shellAliases = {
         nr = "sudo nixos-rebuild switch --flake /etc/nixos#nfwin";
-        c = "clear";
+        hyprland = "Hyprland";
+	c = "clear";
       };
 
       history = {
