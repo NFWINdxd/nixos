@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
   ];
 
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
  services.flatpak.enable = true;
@@ -16,7 +17,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Stockholm";
@@ -124,6 +124,9 @@ services.mullvad-vpn.enable = true;
     protontricks
     openssh
     osu-lazer-bin
+    xppen_4
+    thunar
+    gnome-multi-writer
   ];
 
   environment.sessionVariables.EDITOR = "nvim";
@@ -140,7 +143,7 @@ services.mullvad-vpn.enable = true;
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  services.openssh.enable = false;
+  services.openssh.enable = true;
 
   home-manager = {
     backupFileExtension = "hm-old";
@@ -154,6 +157,18 @@ services.mullvad-vpn.enable = true;
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # networking.firewall.enable = false;
+
+
+  systemd.services.tailscaled.serviceConfig.Environment = [ 
+    "TS_DEBUG_FIREWALL_MODE=nftables" 
+  ];
+
+  systemd.network.wait-online.enable = false; 
+  boot.initrd.systemd.network.wait-online.enable = false;
+
+
+
+
 
   system.stateVersion = "26.05"; # Did you read the comment?
 

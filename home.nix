@@ -27,6 +27,13 @@
       };
     };
 
+
+
+
+
+
+
+
     services.hyprlauncher = {
       enable = true;
       settings = {
@@ -55,7 +62,7 @@
           # By default/fallback
           {
             monitor = "HDMI-A-1";
-            path = "~/Pictures/artoria.jpg";
+            path = "~/Pictures/openbsd.png";
           }
         ];
       };
