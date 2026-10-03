@@ -35,22 +35,19 @@
     options = ["fmask=0077" "dmask=0077"];
   };
 
-  swapDevices = [];
+swapDevices = [{
+  device = "/var/lib/swapfile";
+  size = 64*1024;
+}];
+
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
- hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = true;  # see the note above
-  
-
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia.open = true; # see the note above
 
   hardware.opentabletdriver.enable = true;
   hardware.uinput.enable = true;
-
-
-
 }

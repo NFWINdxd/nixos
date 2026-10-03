@@ -1,16 +1,16 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
   ];
 
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
- services.flatpak.enable = true;
+  services.flatpak.enable = true;
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -45,10 +45,17 @@
   users.users."nfwin" = {
     isNormalUser = true;
     description = "nfwin";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
+
+
+
+
+
+
+
 
   nixpkgs.config.allowUnfree = true;
 
@@ -58,7 +65,9 @@
 
   programs.zsh.enable = true;
 
-services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.enable = true;
+
+ virtualisation.docker.enable = true;
 
   programs.steam = {
     enable = true;
@@ -66,7 +75,6 @@ services.mullvad-vpn.enable = true;
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
-
 
   xdg = {
     portal = {
@@ -127,6 +135,12 @@ services.mullvad-vpn.enable = true;
     xppen_4
     thunar
     gnome-multi-writer
+    gimp
+    qbittorrent
+    lug-helper
+    inputs.nix-citizen.packages.${system}.rsi-launcher
+    mullvad-vpn
+    prismlauncher
   ];
 
   environment.sessionVariables.EDITOR = "nvim";
@@ -158,18 +172,12 @@ services.mullvad-vpn.enable = true;
   # networking.firewall.allowedUDPPorts = [ ... ];
   # networking.firewall.enable = false;
 
-
-  systemd.services.tailscaled.serviceConfig.Environment = [ 
-    "TS_DEBUG_FIREWALL_MODE=nftables" 
+  systemd.services.tailscaled.serviceConfig.Environment = [
+    "TS_DEBUG_FIREWALL_MODE=nftables"
   ];
 
-  systemd.network.wait-online.enable = false; 
+  systemd.network.wait-online.enable = false;
   boot.initrd.systemd.network.wait-online.enable = false;
 
-
-
-
-
   system.stateVersion = "26.05"; # Did you read the comment?
-
 }

@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   config = {
-
     home.file.".config/hypr/hyprland.lua".text = builtins.readFile ./hyprland.lua;
 
     programs.home-manager.enable = true;
@@ -10,6 +9,12 @@
     home.username = "nfwin";
     home.homeDirectory = "/home/nfwin";
 
+
+
+
+
+
+
     programs.zsh = {
       enable = true;
       enableCompletion = true;
@@ -18,7 +23,7 @@
       shellAliases = {
         nr = "sudo nixos-rebuild switch --flake /etc/nixos#nfwin";
         hyprland = "Hyprland";
-	c = "clear";
+        c = "clear";
       };
 
       history = {
@@ -26,13 +31,6 @@
         ignoreAllDups = true;
       };
     };
-
-
-
-
-
-
-
 
     services.hyprlauncher = {
       enable = true;
