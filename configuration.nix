@@ -141,6 +141,11 @@
     inputs.nix-citizen.packages.${system}.rsi-launcher
     mullvad-vpn
     prismlauncher
+    wireshark
+    distrobox
+    qemu
+    busybox
+    chromium
   ];
 
   environment.sessionVariables.EDITOR = "nvim";
@@ -168,8 +173,8 @@
 
   # services.openssh.enable = true;
 
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  # networking.firewall.allowedTCPPorts = [ ];
+  # networking.firewall.allowedUDPPorts = [ ];
   # networking.firewall.enable = false;
 
   systemd.services.tailscaled.serviceConfig.Environment = [

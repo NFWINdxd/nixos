@@ -1,13 +1,22 @@
 
 
 hl.monitor({
-    output   = "eDP-2",
-    mode     = "preferred",
-    position = "auto",
+    output   = "eDP-1",
+    mode     = "2560x1600@165",
+    position = "0x0",
     scale    = "auto",
 })
-
-
+hl.workspace_rule({
+workspace = 1," monitor:eDP-1",
+workspace = 2, "monitor:HDMI-A-1",
+})
+hl.monitor({
+  output = "HDMI-A-1",
+  mode = "3840x1080@240",
+  --mode = "5120x1440@240",
+  position = "3560x0",
+  scale = "auto",
+})
 
 
 
@@ -22,8 +31,8 @@ hl.on("hyprland.start", function ()
 end)
 
 
-hl.env("XCURSOR_SIZE", "34")
-hl.env("HYPRCURSOR_SIZE", "34")
+hl.env("XCURSOR_SIZE", "24")
+hl.env("HYPRCURSOR_SIZE", "24")
 
 
 hl.config({
@@ -113,6 +122,9 @@ hl.config({
 hl.config({
     scrolling = {
         fullscreen_on_one_column = true,
+	column_width = 0.3,
+	focus_fit_method = 1,
+
     },
 })
 
@@ -132,7 +144,7 @@ hl.config({
         kb_layout  = "se",
         kb_variant = "nodeadkeys",
 sensitivity = "-0.7",
-
+scroll_factor = "2.0",
         touchpad = {
             natural_scroll = true,
            
@@ -147,13 +159,6 @@ sensitivity = "-0.7",
    		 direction = "horizontal",
    		 action = "workspace"
 })
-
-hl.device({
-    name        = "epic-mouse-v1",
-    sensitivity = -0.5,
-})
-
-
 
 local mainMod = "SUPER" 
 
