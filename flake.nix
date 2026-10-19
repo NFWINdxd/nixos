@@ -4,25 +4,30 @@
     homemanager.url = "github:nix-community/home-manager";
     homemanager.inputs.nixpkgs.follows = "nixpkgs";
     nix-citizen.url = "github:LovingMelody/nix-citizen";
+   nixvim.url = "github:nix-community/nixvim";
+nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
 
-        # Optional - updates underlying without waiting for nix-citizen to update
-        nix-gaming.url = "github:fufexan/nix-gaming";
-        nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
-  };
 
-  outputs = {self, nixpkgs, ...} @ inputs: {
+   ani-cli = {
+    url = "github:pystardust/ani-cli";
+   flake = false;
+   };
+       
+      };
+
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: {
     nixosConfigurations.nfwin = inputs.nixpkgs.lib.nixosSystem {
-     specialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
 
-     modules = [
+      modules = [
         ./configuration.nix
         inputs.homemanager.nixosModules.default
       ];
     };
   };
-
-
- 
 }
-
-

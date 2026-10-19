@@ -12,8 +12,8 @@ workspace = 2, "monitor:HDMI-A-1",
 })
 hl.monitor({
   output = "HDMI-A-1",
-  mode = "3840x1080@240",
-  --mode = "5120x1440@240",
+ mode = "3840x1080@240",
+ -- mode = "5120x1440@240",
   position = "3560x0",
   scale = "auto",
 })
@@ -131,8 +131,8 @@ hl.config({
 
 hl.config({
     misc = {
-        force_default_wallpaper = -1,    
-        disable_hyprland_logo   = false, 
+        force_default_wallpaper = 1,    
+        disable_hyprland_logo   = true, 
 	disable_watchdog_warning = true  
     },
 })
@@ -203,6 +203,26 @@ hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = tr
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
+
+
+local function mkScreenshotBind(core)
+    return "mkdir -p images; GRIMBLAST_HIDE_CURSOR=1 grimblast " .. core .. " images/$(date \"+%Y-%m-%d_%H:%M:%S\").png"
+end
+
+for key, cmd in pairs({
+    -- manual select
+    ["Print"] = mkScreenshotBind("--freeze copysave area"),
+    -- current screen
+    ["SHIFT + Print"] = mkScreenshotBind("copysave output"),
+    -- all screens
+    ["CTRL + Print"] = mkScreenshotBind("copysave screen"),
+
+    -- copy text using ocr (using '-' to stream to stdout)
+    [mainMod .. " + O"] = "sh -c 'GRIMBLAST_HIDE_CURSOR=1 grimblast --freeze save area - | tesseract - - | wl-copy'"
+}) do
+    hl.bind(key, hl.dsp.exec_cmd(cmd))
+end
+
 
 
 

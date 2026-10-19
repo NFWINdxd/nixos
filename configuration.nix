@@ -50,28 +50,30 @@
     shell = pkgs.zsh;
   };
 
-
-
-
-
-
-
-
   nixpkgs.config.allowUnfree = true;
 
-  programs.hyprland.enable = true;
-
-  programs.hyprland.xwayland.enable = true;
+programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+    withUWSM = true;
+  };
 
   programs.zsh.enable = true;
 
   services.mullvad-vpn.enable = true;
 
- virtualisation.docker.enable = true;
+  virtualisation.docker.enable = true;
+
+
+
+
+
+
+
 
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
@@ -81,12 +83,13 @@
       enable = true;
       xdgOpenUsePortal = true;
       config = {
-        common.default = ["gtk"];
+        common.default = ["gtk" "hyprland"];
         hyprland.default = ["gtk" "hyprland"];
       };
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
         pkgs.xdg-desktop-portal-hyprland
+	pkgs.xdg-desktop-portal
       ];
     };
   };
@@ -94,7 +97,18 @@
   services.pipewire = {
     enable = true;
     pulse.enable = true;
+    alsa.enable = true;
+    wireplumber.enable = true;
   };
+
+services.dbus.enable = true;
+
+
+
+
+
+
+
 
   programs.nano.enable = false;
 
@@ -146,6 +160,21 @@
     qemu
     busybox
     chromium
+    grimblast
+    wl-clipboard
+    ddrescue
+    yt-dlp
+    fzf
+    ani-cli
+    vlc
+    mpv
+    vimPlugins.kanagawa-nvim
+    usbimager
+    heroic
+    
+(tesseract.override {
+    enableLanguages = [ "eng" "jpn" "rus" "swe" ];
+  })
   ];
 
   environment.sessionVariables.EDITOR = "nvim";
@@ -168,6 +197,7 @@
     backupFileExtension = "hm-old";
     useGlobalPkgs = true;
     useUserPackages = false;
+    extraSpecialArgs = { inherit inputs; };
     users.nfwin = {imports = [./home.nix];};
   };
 

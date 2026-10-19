@@ -1,5 +1,13 @@
-{pkgs, ...}: {
-  config = {
+{pkgs, inputs, ...}: {
+ 
+
+imports = [
+    inputs.nixvim.homeManagerModules.nixvim # <-- Add this line
+  ];
+
+
+
+ config = {
     home.file.".config/hypr/hyprland.lua".text = builtins.readFile ./hyprland.lua;
 
     programs.home-manager.enable = true;
@@ -8,12 +16,6 @@
 
     home.username = "nfwin";
     home.homeDirectory = "/home/nfwin";
-
-
-
-
-
-
 
     programs.zsh = {
       enable = true;
@@ -45,7 +47,19 @@
       };
     };
 
-    services.hyprpaper = {
+
+
+  programs.nixvim = {
+    enable = true;
+
+    colorschemes.kanagawa.enable = true;
+    plugins.lualine.enable = true;
+	plugins.neo-tree.enable = true;
+  };
+
+
+
+services.hyprpaper = {
       enable = true;
       settings = {
         preload = [
@@ -60,8 +74,16 @@
           # By default/fallback
           {
             monitor = "HDMI-A-1";
-            path = "~/Pictures/openbsd.png";
+            path = "~/Pictures/artoria.jpg";
+		#path = "~/Pictures/openbsd.png";
           }
+{
+monitor = "eDP-1";
+path = "~/Pictures/j2k25.png";
+}
+
+
+
         ];
       };
     };
