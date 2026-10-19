@@ -52,7 +52,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-programs.hyprland = {
+  programs.hyprland = {
     enable = true;
     xwayland.enable = true;
     withUWSM = true;
@@ -63,13 +63,6 @@ programs.hyprland = {
   services.mullvad-vpn.enable = true;
 
   virtualisation.docker.enable = true;
-
-
-
-
-
-
-
 
   programs.steam = {
     enable = true;
@@ -83,13 +76,12 @@ programs.hyprland = {
       enable = true;
       xdgOpenUsePortal = true;
       config = {
-        common.default = ["gtk" "hyprland"];
+        common.default = ["gtk"];
         hyprland.default = ["gtk" "hyprland"];
       };
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
         pkgs.xdg-desktop-portal-hyprland
-	pkgs.xdg-desktop-portal
       ];
     };
   };
@@ -101,14 +93,7 @@ programs.hyprland = {
     wireplumber.enable = true;
   };
 
-services.dbus.enable = true;
-
-
-
-
-
-
-
+  services.dbus.enable = true;
 
   programs.nano.enable = false;
 
@@ -171,10 +156,10 @@ services.dbus.enable = true;
     vimPlugins.kanagawa-nvim
     usbimager
     heroic
-    
-(tesseract.override {
-    enableLanguages = [ "eng" "jpn" "rus" "swe" ];
-  })
+
+    (tesseract.override {
+      enableLanguages = ["eng" "jpn" "rus" "swe"];
+    })
   ];
 
   environment.sessionVariables.EDITOR = "nvim";
@@ -197,7 +182,7 @@ services.dbus.enable = true;
     backupFileExtension = "hm-old";
     useGlobalPkgs = true;
     useUserPackages = false;
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     users.nfwin = {imports = [./home.nix];};
   };
 

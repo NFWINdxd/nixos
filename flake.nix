@@ -4,17 +4,15 @@
     homemanager.url = "github:nix-community/home-manager";
     homemanager.inputs.nixpkgs.follows = "nixpkgs";
     nix-citizen.url = "github:LovingMelody/nix-citizen";
-   nixvim.url = "github:nix-community/nixvim";
-nix-gaming.url = "github:fufexan/nix-gaming";
+    nixvim.url = "github:nix-community/nixvim";
+    nix-gaming.url = "github:fufexan/nix-gaming";
     nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
 
-
-   ani-cli = {
-    url = "github:pystardust/ani-cli";
-   flake = false;
-   };
-       
-      };
+    ani-cli = {
+      url = "github:pystardust/ani-cli";
+      flake = false;
+    };
+  };
 
   outputs = {
     self,

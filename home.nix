@@ -1,13 +1,13 @@
-{pkgs, inputs, ...}: {
- 
-
-imports = [
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
     inputs.nixvim.homeManagerModules.nixvim # <-- Add this line
   ];
 
-
-
- config = {
+  config = {
     home.file.".config/hypr/hyprland.lua".text = builtins.readFile ./hyprland.lua;
 
     programs.home-manager.enable = true;
@@ -47,19 +47,15 @@ imports = [
       };
     };
 
+    programs.nixvim = {
+      enable = true;
 
+      colorschemes.kanagawa.enable = true;
+      plugins.lualine.enable = true;
+      plugins.neo-tree.enable = true;
+    };
 
-  programs.nixvim = {
-    enable = true;
-
-    colorschemes.kanagawa.enable = true;
-    plugins.lualine.enable = true;
-	plugins.neo-tree.enable = true;
-  };
-
-
-
-services.hyprpaper = {
+    services.hyprpaper = {
       enable = true;
       settings = {
         preload = [
@@ -75,15 +71,12 @@ services.hyprpaper = {
           {
             monitor = "HDMI-A-1";
             path = "~/Pictures/artoria.jpg";
-		#path = "~/Pictures/openbsd.png";
+            #path = "~/Pictures/openbsd.png";
           }
-{
-monitor = "eDP-1";
-path = "~/Pictures/j2k25.png";
-}
-
-
-
+          {
+            monitor = "eDP-1";
+            path = "~/Pictures/j2k25.png";
+          }
         ];
       };
     };
