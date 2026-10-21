@@ -69,7 +69,8 @@
     remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  };
+
+ };
 
   xdg = {
     portal = {
@@ -146,16 +147,12 @@
     busybox
     chromium
     grimblast
-    wl-clipboard
-    ddrescue
     yt-dlp
     fzf
-    ani-cli
     vlc
     mpv
-    vimPlugins.kanagawa-nvim
-    usbimager
     heroic
+
 
     (tesseract.override {
       enableLanguages = ["eng" "jpn" "rus" "swe"];

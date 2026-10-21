@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim # <-- Add this line
+    inputs.nixvim.homeManagerModules.nixvim
   ];
 
   config = {
@@ -70,8 +70,8 @@
           # By default/fallback
           {
             monitor = "HDMI-A-1";
-            path = "~/Pictures/artoria.jpg";
-            #path = "~/Pictures/openbsd.png";
+            #path = "~/Pictures/artoria.jpg";
+            path = "~/Pictures/openbsd.png";
           }
           {
             monitor = "eDP-1";

@@ -7,6 +7,7 @@
     nixvim.url = "github:nix-community/nixvim";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
+dw-proton.url = "github:imaviso/dwproton-flake";
 
     ani-cli = {
       url = "github:pystardust/ani-cli";
@@ -17,8 +18,10 @@
   outputs = {
     self,
     nixpkgs,
-    ...
-  } @ inputs: {
+    ...}
+
+
+  @ inputs: {
     nixosConfigurations.nfwin = inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
 
@@ -28,4 +31,5 @@
       ];
     };
   };
+  
 }
