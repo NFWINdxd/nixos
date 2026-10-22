@@ -12,8 +12,8 @@ workspace = 2, "monitor:HDMI-A-1",
 })
 hl.monitor({
   output = "HDMI-A-1",
- mode = "3840x1080@240",
- -- mode = "5120x1440@240",
+ --mode = "3840x1080@240",
+  mode = "5120x1440@240",
   position = "3560x0",
   scale = "auto",
 })
