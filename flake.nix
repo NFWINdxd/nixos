@@ -9,10 +9,7 @@
     nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
 dw-proton.url = "github:imaviso/dwproton-flake";
 
-    ani-cli = {
-      url = "github:pystardust/ani-cli";
-      flake = false;
-    };
+    
   };
 
   outputs = {
@@ -22,6 +19,18 @@ dw-proton.url = "github:imaviso/dwproton-flake";
 
 
   @ inputs: {
+
+
+
+
+ani-cli = {
+      url = "github:pystardust/ani-cli";
+      flake = false;
+    };
+
+
+
+
     nixosConfigurations.nfwin = inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
 

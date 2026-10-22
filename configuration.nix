@@ -152,7 +152,7 @@
     vlc
     mpv
     heroic
-
+	ani-cli
 
     (tesseract.override {
       enableLanguages = ["eng" "jpn" "rus" "swe"];

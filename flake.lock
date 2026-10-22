@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "ani-cli": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1791126401,
-        "narHash": "sha256-xfb2cUQY26R3XRMGX0C8ZK9XtI2mQGK0wkktMg7LxcM=",
-        "owner": "pystardust",
-        "repo": "ani-cli",
-        "rev": "21ed4a0a6354688622b5a967d93ba96d851d0ef2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pystardust",
-        "repo": "ani-cli",
-        "type": "github"
-      }
-    },
     "dw-proton": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -309,7 +293,6 @@
     },
     "root": {
       "inputs": {
-        "ani-cli": "ani-cli",
         "dw-proton": "dw-proton",
         "homemanager": "homemanager",
         "nix-citizen": "nix-citizen",
