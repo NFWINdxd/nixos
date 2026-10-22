@@ -81,24 +81,6 @@
       };
     };
 
-    services.hyprsunset.enable = true;
-
-    services.hyprsunset.settings = {
-      settings = {
-        max-gamma = "100";
-
-        profile = [
-          {
-            time = "7:30";
-            identity = true;
-          }
-          {
-            time = "21:00";
-            temprature = 5500;
-            gamma = 0.8;
-          }
-        ];
-      };
-    };
+  
   };
 }
