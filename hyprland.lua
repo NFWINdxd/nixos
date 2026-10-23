@@ -143,7 +143,7 @@ hl.config({
     input = {
         kb_layout  = "se",
         kb_variant = "nodeadkeys",
-sensitivity = "-0.7",
+sensitivity = "0.0",
 scroll_factor = "2.0",
         touchpad = {
             natural_scroll = true,
