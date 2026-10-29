@@ -50,7 +50,7 @@
     programs.nixvim = {
       enable = true;
 
-      colorschemes.kanagawa.enable = true;
+      colorschemes.rose-pine.enable = true;
       plugins.lualine.enable = true;
       plugins.neo-tree.enable = true;
     };

@@ -6,12 +6,13 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./hermes.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.flatpak.enable = true;
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos-lenovo"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -153,6 +154,9 @@
     heroic
     ani-cli
     hyprpwcenter
+steamtinkerlaunch
+
+
     (tesseract.override {
       enableLanguages = ["eng" "jpn" "rus" "swe"];
     })
@@ -172,7 +176,6 @@
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  services.openssh.enable = true;
 
   home-manager = {
     backupFileExtension = "hm-old";
@@ -197,3 +200,4 @@
 
   system.stateVersion = "26.05"; # Did you read the comment?
 }
+

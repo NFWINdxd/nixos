@@ -12,8 +12,8 @@ workspace = 2, "monitor:HDMI-A-1",
 })
 hl.monitor({
   output = "HDMI-A-1",
- --mode = "3840x1080@240",
-  mode = "5120x1440@240",
+ mode = "3840x1080@240",
+  --mode = "5120x1440@240",
   position = "3560x0",
   scale = "auto",
 })
@@ -40,10 +40,10 @@ hl.config({
         gaps_in  = 0,
         gaps_out = 0,
 
-        border_size = 2,
+        border_size = 1,
 
         col = {
-            active_border   = { colors = {"rgba(ffb7c5ee)", "rgba(ffb7c5ee)"}, angle = 45 },
+            active_border   = { colors = {"rgba(ffb7c5ee)", "rgba(ffb7c5ee)"}, angle = 0 },
             inactive_border = "rgba(595959aa)",
         },
 
@@ -55,8 +55,8 @@ hl.config({
     },
 
     decoration = {
-        rounding       = 2,
-        rounding_power = 2,
+        rounding       = 0,
+        rounding_power = 0,
 
         active_opacity   = 1,
         inactive_opacity = 1,
@@ -143,7 +143,7 @@ hl.config({
     input = {
         kb_layout  = "se",
         kb_variant = "nodeadkeys",
-sensitivity = "0.0",
+sensitivity = "-0.75",
 scroll_factor = "2.0",
         touchpad = {
             natural_scroll = true,
