@@ -99,15 +99,8 @@
 
 
 
-services.hermes-agent = {
-    enable = true;
-    addToSystemPackages = true;
-      settings = {
-        display = { compact = false; personality = "kawaii"; };
-  memory = { memory_enabled = true; user_profile_enabled = true; };
-  };
 
-      };
+
 
 
 

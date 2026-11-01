@@ -11,7 +11,6 @@
     nixvim.url = "github:nix-community/nixvim";
     nix-gaming.url = "github:fufexan/nix-gaming";
 
-  hermes-agent.url = "github:NousResearch/hermes-agent";
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
@@ -23,7 +22,6 @@
       modules = [
         ./configuration.nix
         inputs.homemanager.nixosModules.default
-        inputs.hermes-agent.nixosModules.default
       ];
     };
   };
