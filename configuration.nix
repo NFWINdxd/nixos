@@ -6,12 +6,11 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./hermes.nix
-  ];
-
+];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.flatpak.enable = true;
+  programs.nix-ld.enable = true;
   networking.hostName = "nixos-lenovo"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -98,6 +97,20 @@
 
   programs.nano.enable = false;
 
+
+
+services.hermes-agent = {
+    enable = true;
+    addToSystemPackages = true;
+      settings = {
+        display = { compact = false; personality = "kawaii"; };
+  memory = { memory_enabled = true; user_profile_enabled = true; };
+  };
+
+      };
+
+
+
   environment.systemPackages = with pkgs; [
     kitty
     vesktop
@@ -157,9 +170,13 @@
 steamtinkerlaunch
 
 
+
     (tesseract.override {
       enableLanguages = ["eng" "jpn" "rus" "swe"];
     })
+
+
+ 
   ];
 
   environment.sessionVariables.EDITOR = "nvim";
