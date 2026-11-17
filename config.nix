@@ -6,44 +6,18 @@
 }: {
   imports = [
     ./hardware.nix
+    ./network.nix
+    ./locale.nix
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.flatpak.enable = true;
   programs.nix-ld.enable = true;
-  networking.hostName = "nixos-lenovo"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  networking.networkmanager.enable = true;
-  hardware.bluetooth.enable = true;
+ 
+   
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
 
-  time.timeZone = "Europe/Stockholm";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "sv_SE.UTF-8";
-    LC_IDENTIFICATION = "sv_SE.UTF-8";
-    LC_MEASUREMENT = "sv_SE.UTF-8";
-    LC_MONETARY = "sv_SE.UTF-8";
-    LC_NAME = "sv_SE.UTF-8";
-    LC_NUMERIC = "sv_SE.UTF-8";
-    LC_PAPER = "sv_SE.UTF-8";
-    LC_TELEPHONE = "sv_SE.UTF-8";
-    LC_TIME = "sv_SE.UTF-8";
-  };
-
-  services.xserver.xkb = {
-    layout = "se";
-    variant = "nodeadkeys";
-  };
-
-  console.keyMap = "sv-latin1";
 
   users.users."nfwin" = {
     isNormalUser = true;
@@ -63,7 +37,7 @@
 
   programs.zsh.enable = true;
 
-  services.mullvad-vpn.enable = true;
+  
 
   virtualisation.docker.enable = true;
 
@@ -113,7 +87,6 @@
     ripgrep
     fd
     tree
-    hyprtoolkit
     btop
     htop
     tor
@@ -139,10 +112,6 @@
     mullvad-vpn
     prismlauncher
     wireshark
-    distrobox
-    qemu
-    busybox
-    chromium
     grimblast
     yt-dlp
     fzf
@@ -150,7 +119,6 @@
     mpv
     heroic
     ani-cli
-    hyprpwcenter
     steamtinkerlaunch
     samrewritten
     freecad
@@ -165,14 +133,7 @@
 
   environment.sessionVariables.EDITOR = "nvim";
 
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # }
-
-  nixpkgs.config.permittedInsecurePackages = [
+   nixpkgs.config.permittedInsecurePackages = [
     "electron-40.10.5"
   ];
 
@@ -186,15 +147,9 @@
     users.nfwin = {imports = [./home.nix];};
   };
 
-   services.openssh.enable = true;
 
-  # networking.firewall.allowedTCPPorts = [ ];
-  # networking.firewall.allowedUDPPorts = [ ];
-  # networking.firewall.enable = false;
 
-  systemd.services.tailscaled.serviceConfig.Environment = [
-    "TS_DEBUG_FIREWALL_MODE=nftables"
-  ];
+
 
   systemd.network.wait-online.enable = false;
   boot.initrd.systemd.network.wait-online.enable = false;
