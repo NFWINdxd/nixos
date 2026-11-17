@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-];
+  ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.flatpak.enable = true;
@@ -18,6 +18,9 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   networking.networkmanager.enable = true;
+  hardware.bluetooth.enable = true;
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
 
   time.timeZone = "Europe/Stockholm";
 
@@ -66,7 +69,7 @@
 
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
@@ -97,20 +100,11 @@
 
   programs.nano.enable = false;
 
-
-
-
-
-
-
-
   environment.systemPackages = with pkgs; [
     kitty
     vesktop
     librewolf
     fastfetch
-    hyprpaper
-    hyprlauncher
     vim
     github-cli
     alejandra
@@ -125,8 +119,6 @@
     tor
     steam
     tor-browser
-    hyprsunset
-    waybar
     wine64
     eden
     unzip
@@ -140,7 +132,6 @@
     osu-lazer-bin
     xppen_4
     thunar
-    gnome-multi-writer
     gimp
     qbittorrent
     lug-helper
@@ -160,16 +151,15 @@
     heroic
     ani-cli
     hyprpwcenter
-steamtinkerlaunch
+    steamtinkerlaunch
+    samrewritten
+    freecad
 
-
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     (tesseract.override {
       enableLanguages = ["eng" "jpn" "rus" "swe"];
     })
-
-
- 
   ];
 
   environment.sessionVariables.EDITOR = "nvim";
@@ -195,7 +185,7 @@ steamtinkerlaunch
     users.nfwin = {imports = [./home.nix];};
   };
 
-  # services.openssh.enable = true;
+   services.openssh.enable = true;
 
   # networking.firewall.allowedTCPPorts = [ ];
   # networking.firewall.allowedUDPPorts = [ ];
@@ -210,4 +200,3 @@ steamtinkerlaunch
 
   system.stateVersion = "26.05"; # Did you read the comment?
 }
-

@@ -6,10 +6,6 @@ hl.monitor({
     position = "0x0",
     scale    = "auto",
 })
-hl.workspace_rule({
-workspace = 1," monitor:eDP-1",
-workspace = 2, "monitor:HDMI-A-1",
-})
 hl.monitor({
   output = "HDMI-A-1",
  mode = "3840x1080@240",
@@ -20,13 +16,23 @@ hl.monitor({
 
 
 
+
+
+hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1", persistent = true })
+hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1", persistent = true })
+hl.workspace_rule({ workspace = "3", monitor = "DP-1", persistent = true })
+
+
+
+
+
 local terminal    = "kitty"
 local fileManager = "dolphin"
 local menu        = "hyprlauncher"
 local browser     = "librewolf"
 
 hl.on("hyprland.start", function () 
-  hl.exec_cmd("hyprpaper")
+  hl.exec_cmd("noctalia")
   hl.exec_cmd(terminal)
 end)
 
@@ -56,7 +62,7 @@ hl.config({
 
     decoration = {
         rounding       = 0,
-        rounding_power = 0,
+        rounding_power = 1,
 
         active_opacity   = 1,
         inactive_opacity = 1,
@@ -161,6 +167,7 @@ scroll_factor = "2.0",
 })
 
 local mainMod = "SUPER" 
+local ipc = "noctalia msg "
 
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
@@ -183,8 +190,29 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+
+
+
+
+
+hl.bind(mainMod .. "+R", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
+hl.bind(mainMod .. "+S", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center"))
+hl.bind(mainMod .. "+comma", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
+hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher hold"))
+
+
+
+
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. "volume-up"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. "volume-down"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. "volume-mute"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. "brightness-up"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. "brightness-down"))
+
+
+
+
+
 
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))

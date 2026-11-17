@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    
+
     homemanager.url = "github:nix-community/home-manager";
     homemanager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -11,14 +11,19 @@
     nixvim.url = "github:nix-community/nixvim";
     nix-gaming.url = "github:fufexan/nix-gaming";
 
+    noctalia.url = "github:noctalia-dev/noctalia";
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    ...
+  }: {
     nixosConfigurations.nfwin = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
-      specialArgs = { inherit inputs; };
-      
+      specialArgs = {inherit inputs;};
+
       modules = [
         ./configuration.nix
         inputs.homemanager.nixosModules.default
