@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -154,6 +154,7 @@
     steamtinkerlaunch
     samrewritten
     freecad
+    lazygit
 
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 
