@@ -12,11 +12,14 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     noctalia.url = "github:noctalia-dev/noctalia";
+
+    hermes-agent.url = "github:NousResearch/hermes-agent";
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
+    hermes-agent,
     ...
   }: {
     nixosConfigurations.nfwin = nixpkgs.lib.nixosSystem {
@@ -25,6 +28,7 @@
       specialArgs = {inherit inputs;};
 
       modules = [
+      hermes-agent.nixosModules.default
         ./config.nix
         inputs.homemanager.nixosModules.default
       ];

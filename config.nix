@@ -13,13 +13,13 @@
   boot.loader.efi.canTouchEfiVariables = true;
   services.flatpak.enable = true;
   programs.nix-ld.enable = true;
+
  
-   
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
 
 
-  users.users."nfwin" = {
+users.users."nfwin" = {
     isNormalUser = true;
     description = "nfwin";
     extraGroups = ["networkmanager" "wheel" "docker"];
@@ -36,10 +36,15 @@
   };
 
   programs.zsh.enable = true;
-
-  
-
   virtualisation.docker.enable = true;
+
+  services.hermes-agent = {
+    enable = true;
+    addToSystemPackages = true;
+  };
+
+
+
 
   programs.steam = {
     enable = true;
@@ -62,11 +67,11 @@
       ];
     };
   };
-  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
     alsa.enable = true;
+     alsa.support32Bit = true;
     wireplumber.enable = true;
   };
 
@@ -123,6 +128,9 @@
     samrewritten
     freecad
     lazygit
+    ripgrep
+    pnpm
+    ffmpeg
 
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 

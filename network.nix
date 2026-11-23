@@ -4,7 +4,7 @@
   ...
 }: {
 
-
+networking.networkmanager.enable = true;
 
  networking.hostName = "nixos-lenovo"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -27,6 +27,23 @@
   # }
 
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Class = "0x200414";
+        FastConnectable = true;
+      };
+    };
+  };
+
+ 
+  services.blueman.enable = true;
 
 
-  }
+    }
+
+
+
+

@@ -14,6 +14,13 @@
 
     home.stateVersion = "26.11";
 
+
+
+
+
+
+
+
     home.username = "nfwin";
     home.homeDirectory = "/home/nfwin";
 
